@@ -1,0 +1,274 @@
+/* General Styles */
+body {
+    font-family: Poppins, sans-serif;
+    background: #e6e6e6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 20px;
+}
+
+.sidebar {
+    width: 250px;
+    /* Increased width for better content visibility */
+    padding: 20px;
+    background: #2c3e50;
+    /* Darker background color */
+    color: white;
+    border-right: 2px solid #ddd;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    /* Full height */
+    overflow-y: auto;
+    /* Ensures scrolling if content overflows */
+    box-shadow: 3px 0 10px rgba(0, 0, 0, 0.1);
+    /* Added box-shadow */
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 24px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.sidebar ul li {
+    margin: 12px 0;
+    /* Added margin for space between elements */
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    white-space: nowrap;
+    /* Prevent line breaks */
+    overflow: hidden;
+    /* Prevent overflow */
+    text-overflow: ellipsis;
+    /* Add ellipsis for long text */
+    display: block;
+    /* Make links block-level for padding */
+    padding: 8px 0;
+    /* Added padding */
+    border-radius: 4px;
+    /* Rounded corners */
+    position: relative;
+    /* To position the bottom border */
+}
+
+/* Bottom border effect on hover and active tab */
+.sidebar ul li a:hover,
+.sidebar ul li.active a {
+    color: #007bff;
+    /* Highlight text color */
+    background-color: #34495e;
+    /* Darken background of active tab */
+}
+
+/* Add a bottom border when the link is hovered or active */
+.sidebar ul li a:hover::after,
+.sidebar ul li.active a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    /* Bottom line thickness */
+    background-color: #007bff;
+    /* Bottom line color */
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    min-width: 500px;
+    box-sizing: border-box;
+    margin-left: 250px;
+    /* Adjust based on sidebar width */
+}
+
+/* Dashboard Widgets */
+.dashboard-widgets {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* Table Styling */
+.small-table {
+    font-size: 12px;
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+}
+
+.small-table th,
+.small-table td {
+    padding: 8px 12px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.small-table th {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+
+.small-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Table Wrapper for scrolling */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+/* Widget styling */
+.widget {
+    background: #ffffff;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    max-width: 100%;
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+}
+
+.widget iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+/* Button Styles */
+.button {
+    padding: 8px 15px;
+    text-decoration: none;
+    background: dodgerblue;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background: #0056b3;
+}
+
+/* Centering Content */
+.center {
+    text-align: center;
+}
+
+/* Tooltip Styles */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 320px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .main-content {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .dashboard-widgets {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .small-table {
+        font-size: 10px;
+    }
+
+    .button {
+        padding: 6px 12px;
+    }
+
+    .widget iframe {
+        height: 200px;
+    }
+}
+
+/* Enhanced Accessibility */
+a {
+    outline: none;
+    transition: color 0.3s ease;
+}
+
+a:focus {
+    color: #0056b3;
+    border-bottom: 2px solid #0056b3;
+}
+
+button:focus,
+.button:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.5);
+}

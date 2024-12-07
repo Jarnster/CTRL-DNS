@@ -1,0 +1,13 @@
+services:
+  zen_dns:
+    container_name: zen_dns
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python3 dns.py
+    ports:
+      - "53:53"       # Expose TCP port 53
+      - "53:53/udp"   # Expose UDP port 53
+    network_mode: "bridge"
+    volumes:
+      - "../data:/data"
